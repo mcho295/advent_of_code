@@ -23,7 +23,29 @@ for idx in range(len(procedures)):
         crates[target].append(moved)
 
 result = list(crates.items())
-result = sorted(result, key=lambda x:x[0])
-top = ''.join([x[1][-1] for x in result])
+result = sorted(result, key=lambda x: x[0])
+top = "".join([x[1][-1] for x in result])
+
+print(top)
+
+# Part 2
+crates = defaultdict(list)
+
+for row in range(len(diagram)):
+    for idx, char in enumerate(diagram[row]):
+        if char.isalpha():
+            crates[idx // 4 + 1].insert(0, char)
+
+for idx in range(len(procedures)):
+    procedure = procedures[idx].split()
+    amount, source, target = int(procedure[1]), int(procedure[3]), int(procedure[5])
+    moved = []
+    for num in range(amount):
+        moved.insert(0, crates[source].pop())
+    crates[target].extend(moved)
+
+result = list(crates.items())
+result = sorted(result, key=lambda x: x[0])
+top = "".join([x[1][-1] for x in result])
 
 print(top)
