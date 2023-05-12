@@ -24,3 +24,26 @@ for pair in data.split("\n"):
         count += 1
 
 print(count)
+
+# Part 2
+count = 0
+
+for pair in data.split("\n"):
+    assignment1 = pair.split(",")[0]
+    section1 = set()
+    for num in range(
+        int(assignment1.split("-")[0]), int(assignment1.split("-")[1]) + 1
+    ):
+        section1.add(num)
+
+    assignment2 = pair.split(",")[1]
+    section2 = set()
+    for num in range(
+        int(assignment2.split("-")[0]), int(assignment2.split("-")[1]) + 1
+    ):
+        section2.add(num)
+
+    if len(set(section1).intersection(section2)) >= 1:
+        count += 1
+
+print(count)
