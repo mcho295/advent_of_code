@@ -28,8 +28,8 @@ for command in commands:
 
 answer = 0
 
-for key, value in size_map.items():
-    if value < 100000:
-        answer += value
+for dir, size in size_map.items():
+    if size <= 100000:
+        answer += size
 
 print(answer)
