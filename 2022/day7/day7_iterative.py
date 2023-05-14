@@ -33,3 +33,13 @@ for dir, size in size_map.items():
         answer += size
 
 print(answer)
+
+# Part 2
+SPACE = 70000000
+USED = size_map["/"]
+UNUSED = SPACE - USED
+NEEDED = 30000000 - UNUSED
+
+answer = min([x for x in size_map.values() if x >= NEEDED])
+
+print(answer)
